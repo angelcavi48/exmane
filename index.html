@@ -44,7 +44,7 @@ function onDeviceReady(){
 					var reg=$.parseJSON(datos);
 					var fila=$("#datosTodos");
 					 for(var i in reg){
-					 	fila.append("<tr><td>"+reg[i].Id_Servicios+"</td><td>"+reg[i].Nombre_servicio+"</td><td>"+reg[i].Direcccion+"</td><td>"+reg[i].RFC+"</td><td>"+reg[i].Telefono+"</td><td>"+reg[i].Clasificacion+"</td><td>"+reg[i].Foto+"</td><td>"+reg[i].Latitud+"</td><td>"+reg[i].Longitud+"</td></tr>");
+					 	fila.append("<tr><td>"+reg[i].id_Servicios+"</td><td>"+reg[i].Nombre_servicio+"</td><td>"+reg[i].Direccion+"</td><td>"+reg[i].RFC+"</td><td>"+reg[i].Telefono+"</td><td>"+reg[i].Clasificacion+"</td><td>"+reg[i].Foto+"</td><td>"+reg[i].Latitud+"</td><td>"+reg[i].Longitud+"</td></tr>");
 					 }
 					$("#tb1").table("refresh");
 				}
