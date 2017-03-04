@@ -36,6 +36,7 @@ function onDeviceReady(){
 
 		/**********Evento para consulta*************/
 		$("#btnConsServ").tap(function (){
+			
 			$.ajax({
 				type:"POST",
 				url:"http://angelcavi48.esy.es/Consulta.php",
@@ -50,6 +51,26 @@ function onDeviceReady(){
 				}
 			});
 		});
+
+             /**********Evento por id*************/
+		$("#btnConsId").tap(function (){
+			var ids=$("#idser").val();
+			$.ajax({
+				type:"POST",
+				url:"http://angelcavi48.esy.es/Consultaid.php",
+				data:"Id="+ids,
+				success:function (datos) {
+					var reg=$.parseJSON(datos);
+					var fila=$("#datosTodos");
+					 for(var i in reg){
+					 	fila.append("<tr><td>"+reg[i].id_Servicios+"</td><td>"+reg[i].Nombre_servicio+"</td><td>"+reg[i].Direccion+"</td><td>"+reg[i].RFC+"</td><td>"+reg[i].Telefono+"</td><td>"+reg[i].Clasificacion+"</td><td>"+reg[i].Foto+"</td><td>"+reg[i].Latitud+"</td><td>"+reg[i].Longitud+"</td></tr>");
+					 }
+					$("#tb1").table("refresh");
+				}
+			});
+		});
+
+
 	/***********Obtener Coordenadas***********************/
 	$("#btnCords").tap(function(){//Obtener coordenadas para el registro de servicios			
   		obtenerUbicacion();
@@ -106,6 +127,7 @@ function onDeviceReady(){
 			<ul data-role="listview">
 				<li><a href="#Registrar">Registrar servicios</a></li>	
 				<li><a href="#Consultar">Consultar servicios</a></li>
+				<li><a href="#Consultarid">Consultar servicios por id</a></li>
 				<li><a href="#Actualizar">Actualizar servicios</a></li>
 				<li><a href="#Eliminar">Eliminar servicios</a></li>
 			</ul>	
@@ -169,5 +191,40 @@ function onDeviceReady(){
 			<p><a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a></p>
 		</div>
 	</div>
+
+
+          <div data-role="page" id="Consultarid">
+		<div data-role="header">
+			<p>Consultar servicios</p>
+		</div>	
+		<div data-role="content">
+			<input type="text" id="idser" placeholder="Escribe el id del servicio">
+			<input type="button" id="btnConsId" value="Consultar Servicio de id seleccionado">
+			<div>
+			<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="tb1">
+				<thead id="datosTodos">
+					<tr>
+						<th data-priority="1">Id</th>
+						<th data-priority="2">Nombre</th>
+						<th data-priority="3">Direción</th>
+						<th data-priority="4">RFC</th>
+						<th data-priority="5">Tel:</th>
+						<th data-priority="6">Clasif</th>
+						<th data-priority="7">Foto</th>
+						<th data-priority="8">Lat</th>
+						<th data-priority="9">Long</th>
+					</tr>
+				</thead>				
+				<tbody id="datosTodos">
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div data-role="footer">
+			<p><a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a></p>
+		</div>
+	</div>
+
+
 </body>
 </html>
