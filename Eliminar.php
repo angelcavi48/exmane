@@ -1,12 +1,12 @@
 <?php
 
 include "conexion.php";
+echo "entro"
+$Idser=$_POST['Id'];
 
-$Idser=$_POST["Id"];
-
-$sql="DELETE * FROM servicios where id_Servicios ='$Idser'";
+$sql="DELETE FROM servicios where id_Servicios =$Idser";
 $resp=mysqli_query($conn,$sql);
-
+echo "borro"
 if($resp){
 echo "el registro fue eliminado correctamente"
 	}
