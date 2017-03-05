@@ -61,11 +61,11 @@ function onDeviceReady(){
 				data:"Id="+ids,
 				success:function (datos) {
 					var reg=$.parseJSON(datos);
-					var fila=$("#datosTodos");
+					var fila=$("#datosid");
 					 for(var i in reg){
 					 	fila.append("<tr><td>"+reg[i].id_Servicios+"</td><td>"+reg[i].Nombre_servicio+"</td><td>"+reg[i].Direccion+"</td><td>"+reg[i].RFC+"</td><td>"+reg[i].Telefono+"</td><td>"+reg[i].Clasificacion+"</td><td>"+reg[i].Foto+"</td><td>"+reg[i].Latitud+"</td><td>"+reg[i].Longitud+"</td></tr>");
 					 }
-					$("#tb1").table("refresh");
+					$("#tb2").table("refresh");
 				}
 			});
 		});
@@ -201,8 +201,8 @@ function onDeviceReady(){
 			<input type="text" id="idser" placeholder="Escribe el id del servicio">
 			<input type="button" id="btnConsId" value="Consultar Servicio de id seleccionado">
 			<div>
-			<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="tb1">
-				<thead id="datosTodos">
+			<table data-role="table" data-mode="columntoggle" class="ui-responsive" id="tb2">
+				<thead id="datosid">
 					<tr>
 						<th data-priority="1">Id</th>
 						<th data-priority="2">Nombre</th>
@@ -215,7 +215,7 @@ function onDeviceReady(){
 						<th data-priority="9">Long</th>
 					</tr>
 				</thead>				
-				<tbody id="datosTodos">
+				<tbody id="datosid">
 				</tbody>
 			</table>
 			</div>
