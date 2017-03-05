@@ -9,8 +9,9 @@ $resp=mysqli_query($conn,$sql);
 echo "borro";
 if($resp){
 echo "el registro fue eliminado correctamente";
-	}
-}else{
+	
+}
+else{
 	echo "Ocurrio un error al eliminar el registro".mysqli_error();
 }
 mysqli_close($conn);
