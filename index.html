@@ -97,7 +97,7 @@ function onDeviceReady(){
 			$.ajax({
 				type:"POST",
 				url:"http://angelcavi48.esy.es/Eliminar.php",
-				data:"Id="+ids,
+				data:"Ids="+ids,
 				success:function (datos) {
 					alert("Respuesta:"+datos);
 					 
@@ -105,6 +105,59 @@ function onDeviceReady(){
 			});
 		});
   
+        $("#btnCargDatos").tap(function (){
+        var id=$("#idRegAct").val();
+        $.ajax({
+         type:"POST",
+          url:"http://angelcavi48.esy.es/consultaid.php",
+           data:"id="+id,
+           success: function(datos){
+           var resp=$.parseJSON(datos);
+           var controles=$("#datIDAct");
+            controles.html('ID:<input type="text" id="id1" disabled="true"/><br />nombre:<input type="text" id="n1" /><br />Dirección:<input type="text" id="dir1" /><br />RFC:<input type="text" id="rfc1" /><br /><br />Teléfono:<input type="text" id="tel1" /><br />Clasificacion:<input type="text" id="clas1" disabled="true" /><br />Foto:<input type="text" id="fot1" /><br /><br />Latitude:<input type="text" id="lat1" /><br />Longitude:<input type="text" id="lon1" />');
+      $("#id1").val(resp[0].id_Servicios);
+      $("#n1").val(resp[0].Nombre_servicio);
+      $("#dir1").val(resp[0].Direccion);
+      $("#rfc1").val(resp[0].RFC);
+      $("#tel1").val(resp[0].Telefono);
+      $("#clas1").val(resp[0].Clasificacion);
+      $("#fot1").val(resp[0].Foto);
+      $("#lat1").val(resp[0].Latitud);
+      $("#lon1").val(resp[0].Longitud);
+      
+      }
+  });
+});
+
+$("#btnActId").tap(function (){
+  var id=$("#id1").val();
+  var nom=$("#n1").val();
+  var dir=$("#dir1").val();
+  var rfc=$("#rfc1").val();
+  var tel=$("#tel1").val();
+  var clas=$("#clas1").val();
+  var fot=$("#fot1").val();
+  var lat=$("#lat1").val();
+  var lon=$("#lon1").val();
+  
+
+
+  if(nom=="" || dir==""  ||tel==""|| lat==""){
+    alert("Favor de registrar valores en todos los campos");
+  }else{
+      $.ajax({
+        type:"POST",
+        url:"http://angelcavi48.esy.es/guardarAct.php",
+        data:"id="+id+"&nombre="+nom+"&dir="+dir+"&tel="+tel+"&lat="+lat+"&long="+lon+"&foto="+fot,
+        success: exeGuardarAct
+      });
+
+      function exeGuardarAct(mensaje){
+        alert("Respuesta:"+mensaje);
+      }
+
+    }
+});
 
 
 
@@ -300,6 +353,40 @@ function onDeviceReady(){
 			<p><a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a></p>
 		</div>
 	</div>
+                 
+
+
+
+                       <div data-role="page" id="Actualizar" data-url="map-page">
+                      <div data-role="header" data-position="fixed">
+	                   <h1>Actualizar servicios</h1>
+                       </div>
+                       <div data-role="content">
+    	               <input type="button" id="btnConsultaAct" value="Mostrar todo"  />
+                       <div id="todosRegAct"></div>
+                       <input type="text" id="idRegAct"  />
+                       <input type="button" id="btnCargDatos" value="Cargar dato" />
+                       <div id="datIDAct"></div>
+                       <input type="button" id="btnActId" value="Guardar cambios" />
+                        </div>
+                     <div data-role="footer" data-position="fixed" style="text-align:center;">
+	                     <div data-role="controlgroup" data-type="horizontal">
+	                      <a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a>
+	                </div>
+                  </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
