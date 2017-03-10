@@ -1,6 +1,7 @@
 <?php
 //Se Agrega el archivo que contine la conexion a la BD
 include "conexion.php";
+$id=$_POST['id'];
 $nom=$_POST['nombre'];
 $dir=$_POST['dir'];
 $tel=$_POST['tel'];

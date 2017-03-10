@@ -105,6 +105,29 @@ function onDeviceReady(){
 			});
 		});
   
+                         /**********Evento para consulta*************/
+		$("#btnConsultaAct").tap(function (){
+			
+			$.ajax({
+				type:"POST",
+				url:"http://angelcavi48.esy.es/Consulta.php",
+				data:"",
+				success:function (datos) {
+					var reg=$.parseJSON(datos);
+					var fila=$("#datosTodos");
+					fila.html("");
+					 for(var i in reg){
+					 	fila.append("<tr><td>"+reg[i].id_Servicios+"</td><td>"+reg[i].Nombre_servicio+"</td><td>"+reg[i].Direccion+"</td><td>"+reg[i].RFC+"</td><td>"+reg[i].Telefono+"</td><td>"+reg[i].Clasificacion+"</td><td>"+reg[i].Foto+"</td><td>"+reg[i].Latitud+"</td><td>"+reg[i].Longitud+"</td></tr>");
+					 }
+					$("#tb1").table("refresh");
+				}
+			});
+		});
+
+
+
+                   
+
         $("#btnCargDatos").tap(function (){
         var id=$("#idRegAct").val();
         $.ajax({
@@ -148,7 +171,7 @@ $("#btnActId").tap(function (){
       $.ajax({
         type:"POST",
         url:"http://angelcavi48.esy.es/guardarAct.php",
-        data:"id="+id+"&nombre="+nom+"&dir="+dir+"&tel="+tel+"&lat="+lat+"&long="+lon+"&foto="+fot,
+        data:"id="+id+"&nombre="+nom+"&dir="+dir+"&tel="+tel+"&rfc"=+rfc+"&lat="+lat+"&long="+lon+"&foto="+fot,
         success: exeGuardarAct
       });
 
