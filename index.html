@@ -108,10 +108,6 @@ function onDeviceReady(){
     
 
 
-
-
-
-
 	/***********Obtener Coordenadas***********************/
 	$("#btnCords").tap(function(){//Obtener coordenadas para el registro de servicios			
   		obtenerUbicacion();
@@ -203,6 +199,40 @@ function onDeviceReady(){
 			<p><a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a></p>
 		</div>
 	</div>
+
+        <div data-role="page" id="Actualizar">
+		<div data-role="header">
+			<p>actualizar servicios servicios</p>
+		</div>	
+		<div data-role="content">
+			<input type="text" id="id" placeholder="Escribe ID">
+			<input type="text" id="Nombre" placeholder="Escribe el nombres del servicio">
+			<input type="text" id="Direccion" placeholder="Escribe la dirección">
+			<input type="text" id="RFC" placeholder="Escribe el RFC">
+			<input type="text" id="Telefono" placeholder="Escribe el número de teléfono">
+			<select id="clasificacion">
+				<option value="Restaurante">Restaurante</option>
+				<option value="Zapateria">Zapatería</option>
+				<option value="Farmacia">Farmacia</option>
+			</select>
+			<input type="button" id="btnFoto" value="Tomar foto">
+			<div id="regFoto"></div>
+			<input type="button" id="btnCords" value="Obtener coordenadas">
+			<input type="text" id="latitud" placeholder="Latitud">
+			<input type="text" id="longitud" placeholder="Longitud">
+			<input type="button" id="btnActualizar" value="Guardar servicio">
+		</div>
+		<div data-role="footer">
+			<p><a href="#Principal" class="ui-btn ui-icon-home ui-btn-icon-left">Regresar</a></p>
+		</div>
+	</div>
+              
+
+
+
+
+
+
 	<div data-role="page" id="Consultar">
 		<div data-role="header">
 			<p>Consultar servicios</p>
