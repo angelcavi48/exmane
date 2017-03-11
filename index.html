@@ -13,6 +13,29 @@
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
+		
+          $("#btnId").tap(function (){
+			var ids=$("#idser").val();
+			$.ajax({
+				type:"POST",
+				url:"http://angelcavi48.esy.es/Consultaid.php",
+				data:"Id="+ids,
+				success:function (datos) {
+					var reg=$.parseJSON(datos);
+					var fila=$("#datosid");
+					 fila.html("");
+			            $("#Nombre").val(reg[i].Nombre_servicio);
+			            $("#Direccion").val(reg[i].Direccion);
+			            $("#RFC").val(reg[i].RFC);
+			            $("#Telefono").val(reg[i].Telefono);
+			             
+			            $("#latitud").val(reg[i].Latitud);
+			            $("#longitud").val(reg[i].Longitud);		 
+
+				}
+			});
+		});
+
 		/*******Evento para registrar servicios*********/
 		$("#btnGuardar").tap(function (){	
 			var nom=$("#Nombre").val();
@@ -216,8 +239,7 @@ function onDeviceReady(){
 				<option value="Zapateria">Zapatería</option>
 				<option value="Farmacia">Farmacia</option>
 			</select>
-			<input type="button" id="btnFoto" value="Tomar foto">
-			<div id="regFoto"></div>
+			
 			<input type="button" id="btnCords" value="Obtener coordenadas">
 			<input type="text" id="latitud" placeholder="Latitud">
 			<input type="text" id="longitud" placeholder="Longitud">
