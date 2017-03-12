@@ -34,6 +34,31 @@ function onDeviceReady(){
 			});
 		});
 
+
+               /*******Evento para registrar servicios*********/
+		$("#btnActualizar").tap(function (){	
+			var id=$("#id").val();
+			var nom=$("#Nombre1").val();
+			var dir=$("#Direccion1").val();
+			var rfc=$("#RFC1").val();
+			var tel=$("#Telefono1").val();
+			var clasif=$("#clasificacion1").val();
+			var foto="img/fotos/foto1.jpg";
+			var lat=$("#latitud1").val();
+			var longit=$("#longitud1").val();
+			alert("Funciona Actualizar");								
+			$.ajax({
+				type:"POST",
+				url:"http://angelcavi48.esy.es/guardarAct.php",
+				data:"Id"=+id+"Nom="+nom+"&Dir="+dir+"&Rfc="+rfc+"&Tel="+tel+"&Clasif="+clasif+"&Foto="+foto+"&Lat="+lat+"&Long="+longit,
+				success:function (datos) {
+					alert("Datos Actualizados correctamente: "+datos);
+				}
+			});
+		});
+
+
+
 		/*******Evento para registrar servicios*********/
 		$("#btnGuardar").tap(function (){	
 			var nom=$("#Nombre").val();
