@@ -15,7 +15,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 		
           $("#btnId").tap(function (){
-			var idsa=$("#id").val();
+			var idsa=$("#id1").val();
 			$.ajax({
 				type:"POST",
 				url:"http://angelcavi48.esy.es/Consultaid.php",
@@ -37,7 +37,7 @@ function onDeviceReady(){
 
                /*******Evento para registrar servicios*********/
 		$("#btnActualizar").tap(function (){	
-			var id=$("#id").val();
+			var id=$("#id1").val();
 			var nom=$("#Nombre1").val();
 			var dir=$("#Direccion1").val();
 			var rfc=$("#RFC1").val();
@@ -251,7 +251,7 @@ function onDeviceReady(){
 			<p>actualizar servicios servicios</p>
 		</div>	
 		<div data-role="content">
-			<input type="text" id="id" placeholder="Escribe ID">
+			<input type="text" id="id1" placeholder="Escribe ID">
 			<input type="button" id="btnId" value="presiona para llenar">
 			<input type="text" id="Nombre1" placeholder="Escribe el nombres del servicio">
 			<input type="text" id="Direccion1" placeholder="Escribe la dirección">
