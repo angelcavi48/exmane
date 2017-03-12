@@ -15,21 +15,20 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 		
           $("#btnId").tap(function (){
-			var ids=$("#id").val();
+			var idsa=$("#id").val();
 			$.ajax({
 				type:"POST",
 				url:"http://angelcavi48.esy.es/Consultaid.php",
-				data:"Id="+ids,
+				data:"Id="+idsa,
 				success:function (datos) {
 					var reg=$.parseJSON(datos);
 					
-			            $("#Nombre").val(reg[0].Nombre_servicio);
-			            $("#Direccion").val(reg[0].Direccion);
-			            $("#RFC").val(reg[0].RFC);
-			            $("#Telefono").val(reg[0].Telefono);
-			             
-			            $("#latitud").val(reg[0].Latitud);
-			            $("#longitud").val(reg[0].Longitud);		 
+			            $("#Nombre1").val(reg[0].Nombre_servicio);
+			            $("#Direccion1").val(reg[0].Direccion);
+			            $("#RFC1").val(reg[0].RFC);
+			            $("#Telefono1").val(reg[0].Telefono);
+			            $("#latitud1").val(reg[0].Latitud);
+			            $("#longitud1").val(reg[0].Longitud);		 
 
 				}
 			});
@@ -229,19 +228,19 @@ function onDeviceReady(){
 		<div data-role="content">
 			<input type="text" id="id" placeholder="Escribe ID">
 			<input type="button" id="btnId" value="presiona para llenar">
-			<input type="text" id="Nombre" placeholder="Escribe el nombres del servicio">
-			<input type="text" id="Direccion" placeholder="Escribe la dirección">
-			<input type="text" id="RFC" placeholder="Escribe el RFC">
-			<input type="text" id="Telefono" placeholder="Escribe el número de teléfono">
-			<select id="clasificacion">
+			<input type="text" id="Nombre1" placeholder="Escribe el nombres del servicio">
+			<input type="text" id="Direccion1" placeholder="Escribe la dirección">
+			<input type="text" id="RFC1" placeholder="Escribe el RFC">
+			<input type="text" id="Telefono1" placeholder="Escribe el número de teléfono">
+			<select id="clasificacion1">
 				<option value="Restaurante">Restaurante</option>
 				<option value="Zapateria">Zapatería</option>
 				<option value="Farmacia">Farmacia</option>
 			</select>
 			
 			<input type="button" id="btnCords" value="Obtener coordenadas">
-			<input type="text" id="latitud" placeholder="Latitud">
-			<input type="text" id="longitud" placeholder="Longitud">
+			<input type="text" id="latitud1" placeholder="Latitud">
+			<input type="text" id="longitud1" placeholder="Longitud">
 			<input type="button" id="btnActualizar" value="Actualizar servicio">
 		</div>
 		<div data-role="footer">
